@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Homepage</title>
+  <link rel = "stylesheet" type = "text/css" href = "Homepage.css">
+  <link rel = "stylesheet" type = "text/css" href = "checkbox.css">
+  <link rel="shortcut icon" href="icon32.ico">
+  <script src = "jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="Reddit.js"></script>
+  <script type="text/javascript" src="rss.js"></script>
+  <script type="text/javascript" src="xkcd.js"></script>
+  <script type = "text/javascript">
+    //Wolfram Alpha
+    function validateWAQ(){
+      var val = eli.value;
+      if (trim(val) == ""){
+        window.open("http://www.wolframalpha.com/","_blank");
+        return false;
+      } else {
+        return true;
+      }
+    }
+    function trim(str){
+      return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
+
+    function submit(){
+      if (validateWAQ())
+        document.getElementById('calculate').submit();
+    }
+
+
+    //if search field is blank, go to website
+    function validate(id,url){
+      var str = document.getElementById(id).value;
+      if(str.length > 0){
+        return true;
+      } else {
+        window.location.href = url;
+        return false;
+      }
+    }
+
+    function searchNetflix(id, url){
+      var str = document.getElementById(id).value;
+      alert(str + " " + (url+str));
+      if(str.length > 0){
+        return true;
+      } else {
+        window.location.href = url+str;
+        return false;
+      }
+    }
+
+    google.load("feeds", "1");
+  </script>
+</head>
+
+<body style="min-height:100%" onLoad="loadCurrentXKCD(); initializeRSS(); setUpRedditCheckboxes(); updateReddit()">
+  
+
+  <table style="border-spacing: 20px;border-collapse: separate;">
+    <tr>
+      <!-- Reddit-->
+      <td style="width: 35%" class="backgroundpanel">
+        <div class = "checkboxes" id = "redditCheckboxes" style="max-width: 100%"></div>
+        <div style="height: 700px; overflow-y: scroll; max-width:100%" id="reddit"></div>
+      </td>
+
+      <!-- middle-->
+      <td style="width: 30%" class="backgroundpanel">
+        <center>
+          <h1> Homepage </h1>
+
+          <!-- Searchbars: -->
+          <table class="invisibleTable">
+            <tr>
+              <form class="search-form" action="http://www.wikipedia.org/search-redirect.php" method = "get">
+                <td class = "invisibleTableCell">
+                <!-- Wikipedia -->
+                
+                  <input type="hidden" name="family" value="wikipedia">
+                  <input id="searchInput" class = "textbox" name="search" type="search" size="20" autofocus="autofocus" accesskey="F" dir="auto">
+                  <input type="hidden" value = "en" name = "language">
+                </td>
+                <td class = "invisibleTableCell">
+                  <input type="submit" class = "bubbleHeader" value="Wikipedia" name="go" onClick="return validate('searchInput', 'http://www.wikipedia.org')">
+                </td> 
+              </form>
+            </tr>
+            <tr>
+              <!--Wolfram Alpha-->
+              <form id="calculate" action="http://www.wolframalpha.com/input/" method="get" target="_blank" onsubmit="return validateWAQ();">
+                <td class = "invisibleTableCell">
+                  <input type="text" class = "textbox" name="i" id="i" />
+                  <input type="hidden" name="t" value="emd01">
+                </td>
+                <td class = "invisibleTableCell">
+                  <input type="submit" class = "bubbleHeader" value="Wolfram|Alpha" onClick="return validate('i', 'http://www.wolframalpha.com')">
+                </td>
+              </form>
+            </tr>
+            <tr>
+
+              <!--Netflix-->
+              <form id="calculate" action="http://www.netflix.com/search/" method="get" target="_blank">
+                <td class = "invisibleTableCell">
+                   <input type="text" class = "textbox" id="netflix">
+                </td>
+                <td class = "invisibleTableCell">
+                   <input type="submit" class = "bubbleHeader" value="Netflix" onClick="return searchNetflix('netflix', 'http://www.netflix.com/search/')">
+                </td>
+              </form>
+              
+            </tr>
+          </table>
+        </center>
+
+
+        <!-- RSS -->
+        <table  class="invisibleTable"width="100%">
+          <tr>
+            <td class = "invisibleTableCell" width = "50%">
+              <div class="rssBackground">
+                <center>
+                  <h3> Ask A Mathematician</h3>
+                </center>
+                <div id="askamathematician"></div>
+              </div>
+            </td>
+            <td class = "invisibleTableCell" width = "50%">
+              <div class="rssBackground">
+                <center>
+                  <h3> What If?</h3>
+                </center>
+                <div id="whatif"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      
+
+      <!--xkcd-->
+      <td style="width: 35%" id = "xkcdCell" class="backgroundpanel">
+        <center>
+          <div id = "xkcdtitle"></div>
+          <table class="invisibleTable">
+            <tr>
+              <td width="25%">
+                <button class = "comicNav" onclick = "xkcdMove(-1)" accesskey="p"> Previous </button>
+              </td>
+              <td>
+                <button class = "comicNav" onclick = "xkcdRandom()" accesskey="r"> Random   </button>
+              </td>
+              <td>
+                <button class = "comicNav" onclick = "xkcdMove(1)"  accesskey="n"> Next   </button>
+               </td>
+            </tr>
+            <tr>
+              <td>
+                <button class = "comicNav" onclick = "xkcdMove('first')"  accesskey="f"> First   </button>
+              </td>
+              <td>
+                <input type="text" id="xkcdindex" class = "xkcdtext">
+              </td>
+              <td>
+                <button class = "comicNav" onclick = "xkcdMove('last')"  accesskey="l"> Last   </button>
+              </td>
+          </table>
+          <br><br>
+          <div id = "xkcdcontent"></div>
+          <br>
+          <button class = "comicNav" onclick = "xkcdMove(-1)" accesskey="p"> Previous </button>
+          <button class = "comicNav" onclick = "xkcdRandom()" accesskey="r"> Random   </button>
+          <button class = "comicNav" onclick = "xkcdMove(1)"  accesskey="n"> Next   </button>
+        </center>
+      </td>
+      
+    </tr>
+  </table>
+</body>
+
+</html>
