@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="icon32.ico">
   <script src = "jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript" src="Reddit_fancy.js"></script>
+  <script type="text/javascript" src="Reddit.js"></script>
   <script type="text/javascript" src="rss.js"></script>
   <script type="text/javascript" src="xkcd.js"></script>
   <script type = "text/javascript">
@@ -22,6 +22,20 @@
     <div class = "checkboxes" id = "redditCheckboxes" style="max-width: 100%;overflow-x: scroll"></div>
         <div style="height: 700px; overflow-y: scroll; max-width:100%" id="reddit"></div>
   </div>
+
+   <!-- XKCD -->
+  <div class="xkcdPanel">
+    <div class="title" id="xkcdtitle">  xkcd </div>
+    <center>
+      <div id = "xkcdcontent"></div>
+    </center>
+    <div class="xkcdNavBar">
+      <div class="navButton" onclick = "xkcdMove(-1)" accesskey="p"> Prev </div>
+      <div class="navButton" onclick = "xkcdRandom()" accesskey="p"> Random </div>
+      <div class="navButton" onclick = "xkcdMove(1)" accesskey="p"> Next </div>
+    </div>
+  </div>
+
   <!-- RSS -->
   <div class="rssPanel">
 
@@ -52,18 +66,6 @@
     </div>
   </div>
 
-  <!-- XKCD -->
-  <div class="xkcdPanel">
-    <div class="title" id="xkcdtitle">  xkcd </div>
-    <center>
-      <div id = "xkcdcontent"></div>
-    </center>
-    <div class="xkcdNavBar">
-      <div class="navButton" onclick = "xkcdMove(-1)" accesskey="p"> Prev </div>
-      <div class="navButton" onclick = "xkcdRandom()" accesskey="p"> Random </div>
-      <div class="navButton" onclick = "xkcdMove(1)" accesskey="p"> Next </div>
-    </div>
-  </div>
 </body>
 
 </html>
