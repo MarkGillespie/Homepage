@@ -4,6 +4,7 @@ body {
 	font-size:16px;
 	font-family:Lucida,Helvetica;
 	font-weight:500;
+	padding: 25px;
 }
 
 
@@ -17,13 +18,13 @@ a {
 }
 
 .subredditLink, .subredditLink:visited{
-	color:#CCC;
+	color:#FFF;
 	text-decoration: none;
 	font-size: 12px;
 }
 
 .subredditLink:hover{
-	color:#EEF;
+	color:#DDD;
 	text-decoration: none;
 	font-size: 12px;
 }
@@ -62,9 +63,9 @@ a {
 	width:100%;
 }
 
-.redditImage{
+.redditImage {
 	float:left;
-	padding-right: 10px;
+	margin-right: 10px;
 }
 
 .redditCommentLink, .redditCommentLink:visited{
@@ -84,6 +85,10 @@ a {
 	width: 100%;
 	font-size: 20px;
 	text-align: center;
+}
+
+.title:hover {
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .rssTitle:hover {
@@ -132,8 +137,6 @@ a {
 	cursor: pointer;
 }
 
-
-
 @media (max-width: 1000px) {
   .redditPanel {
 		width: 50%;
@@ -168,17 +171,21 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 20px;
 } /* this targets the default scrollbar (compulsory) */
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
-  width: 10px;
-  border-radius:5px; 
+
+  border: 5px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
 } /* this will style the thumb, ignoring the track */
 
 ::-webkit-scrollbar-thumb:hover{
   background-color: rgba(255, 255, 255, 0.2);
-  width: 10px;
-  border-radius:5px; 
 } /* this will style the thumb, ignoring the track */
+
+::-webkit-resizer {
+	background-color: rgba(255, 255, 255, 0)
+}

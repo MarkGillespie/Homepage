@@ -19,13 +19,17 @@
 <body style="min-height:100%" onLoad="loadCurrentXKCD(); initializeRSS(); setUpRedditCheckboxes(); updateReddit()">
   <!-- Reddit -->
   <div class="redditPanel">
-    <div class = "checkboxes" id = "redditCheckboxes" style="max-width: 100%;overflow-x: scroll"></div>
-        <div style="height: 700px; overflow-y: scroll; max-width:100%" id="reddit"></div>
+    <a href="https://www.reddit.com/"><div class="title">  reddit </div></a>
+    <center>
+      <div class = "checkboxes" id = "redditCheckboxes" style="max-width: 100%;overflow-x: scroll"></div>
+    </center>
+    <div style="height: 700px; overflow-y: scroll; max-width:100%" id="reddit"></div>
   </div>
 
    <!-- XKCD -->
   <div class="xkcdPanel">
-    <div class="title" id="xkcdtitle">  xkcd </div>
+    <a href="https://xkcd.com/"><div class="title">  xkcd </div></a>
+    <div id="xkcdtitle" style="text-align:center;padding: 4px 0">  xkcd </div>
     <center>
       <div id = "xkcdcontent"></div>
     </center>
