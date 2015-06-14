@@ -13,27 +13,7 @@ function setUpRedditCheckboxes(){
     );
     var width = 3;
     var height = parseInt(subredditArray.length/width);
-
-    $("#redditCheckTable").attr({
-        style: "max-width: 100%"
-    }).append(
-        $("<tr>").attr({
-            id: "row_0"
-        }).append(
-            $("<td>").attr({
-                class:"invisibleTableCell",
-                rowspan:height
-            }).append(
-                $("<a>").attr({
-                    href: "http://www.reddit.com"
-                }).append(
-                    $("<img>").attr({
-                        src: "lilsnoo.png"
-                    })
-                )
-            )
-        )
-    );
+    
     for(var y = 0; y < height; y++){
         for(var x = 0; x < width; x++){
             $("#row_" + y).append(
@@ -153,31 +133,25 @@ function loadReddit(str){
 
                 if(item.data.thumbnail.length===0 || (!isValidImage(item.data.thumbnail) && item.data.thumbnail != "self")){
                     $("#reddit").append(
-                        $("<div>").attr({
-                            class:"invisibleTableCell",
-                            style: "max-width: 100%"
+                        $("<a>").attr({
+                             href: item.data.url,
+                             class: "bubbleLink"
                         }).append(
-                            $("<a>").attr({
-                                 href: item.data.url,
-                                 class: "bubbleLink"
+                            $("<div>").attr({
+                                class: "bubbleHeader"
                             }).append(
                                 $("<div>").attr({
-                                    class: "bubbleHeader"
+                                class: "redditPost"
                                 }).append(
-                                    $("<div>").attr({
-                                    class: "redditPost"
+                                    item.data.title + "   " + nsfw,
+                                    "<br>",
+                                    $("<a>").attr({
+                                        href: "http://www.reddit.com" + item.data.permalink
                                     }).append(
-                                        item.data.title + "   " + nsfw,
-                                        "<br>",
-                                        $("<div>").attr({
-                                            align: "right"
+                                        $("<div>").attr({                                            
+                                            class:'redditCommentLink'
                                         }).append(
-                                            $("<a>").attr({
-                                                href: "http://www.reddit.com" + item.data.permalink,
-                                                class:'redditCommentLink'
-                                            }).append(
-                                                item.data.subreddit + " | " + item.data.num_comments + " comments | posted " + timeAgo(item.data.created_utc)
-                                            )
+                                             item.data.subreddit + " | " + item.data.num_comments + " comments | posted " + timeAgo(item.data.created_utc)
                                         )
                                     )
                                 )
@@ -185,7 +159,6 @@ function loadReddit(str){
                         )
                     );                                    
                         
-                    
                 } else {
 
                     var imgPath;
@@ -195,52 +168,37 @@ function loadReddit(str){
                         imgPath = item.data.thumbnail;
                     }
                     $("#reddit").append(
-                        $("<div>").attr({
-                            class:"invisibleTableCell"
+                        $("<a>").attr({
+                             href: item.data.url,
+                             class: "bubbleLink"
                         }).append(
-                            $("<a>").attr({
-                                 href: item.data.url,
-                                 class: "bubbleLink"
+                            $("<div>").attr({
+                                class: "bubbleHeader"
                             }).append(
-                                $("<div>").attr({
-                                    class: "bubbleHeader"
+                                $("<a>").attr({
+                                    href: item.data.url
                                 }).append(
-                                    $("<table>").attr({
-                                        class:"invisibleTable"
+                                    $("<div>").attr({
+                                        class: "redditImage"
                                     }).append(
-                                        $("<tr>").append(
-                                            $("<td>").attr({
-                                                class:"invisibleTableCell"
-                                            }).append(
-                                                $("<a>").attr({
-                                                    href: item.data.url
-                                                }).append(
-                                                    $("<img>").attr({
-                                                        src:imgPath,
-                                                        class: "icon"
-                                                    })
-                                                )
-                                            ),
-                                            $("<td>").attr({
-                                                class:"invisibleTableCell"
-                                            }).append(
-                                                $("<div>").attr({
-                                                    class: "redditPost"
-                                                }).append(
-                                                    item.data.title + "   " + nsfw,
-                                                    "<br>",
-                                                    $("<div>").attr({
-                                                        align: "right"
-                                                    }).append(
-                                                        $("<a>").attr({
-                                                            href: "http://www.reddit.com" + item.data.permalink,
-                                                            class:'redditCommentLink'
-                                                        }).append(
-                                                             item.data.subreddit + " | " + item.data.num_comments + " comments | posted " + timeAgo(item.data.created_utc)
-                                                        )
-                                                    )
-                                                )
-                                            )  
+                                        $("<img>").attr({
+                                            src:imgPath,
+                                            class: "icon"
+                                        })
+                                    )
+                                ),
+                                $("<div>").attr({
+                                    class: "redditImagePost"
+                                }).append(
+                                    item.data.title + "   " + nsfw,
+                                    "<br>",
+                                    $("<a>").attr({
+                                        href: "http://www.reddit.com" + item.data.permalink
+                                    }).append(
+                                        $("<div>").attr({                                            
+                                            class:'redditCommentLink'
+                                        }).append(
+                                             item.data.subreddit + " | " + item.data.num_comments + " comments | posted " + timeAgo(item.data.created_utc)
                                         )
                                     )
                                 )

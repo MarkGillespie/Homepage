@@ -26,8 +26,9 @@ function loadCurrentXKCD(){
 			mostRecentXKCD = data.num;
 			XKCDindex = data.num;
 			//alert(mostRecentXKCD);
+			$("#xkcdtitle").empty();
 			$("#xkcdtitle").append(
-				$("<h1/>").text(data.num + " " + data.title)
+				data.num + " " + data.title
 			);
 			$("#xkcdcontent").append(
 				$("<a>").attr({
@@ -37,7 +38,7 @@ function loadCurrentXKCD(){
 						src: data.img,
 						title: data.alt,
 						alt: data.title,
-						style : "max-width:100%"
+						class: "xkcdImage"
 					})
 				)
 			);
@@ -62,7 +63,7 @@ function loadXKCD(n){
 			$("#xkcdcontent").empty();
 			$("#xkcdtitle").empty();
 			$("#xkcdtitle").append(
-				$("<h1/>").text(data.num + " " + data.title)
+				data.num + " " + data.title
 			);
 
 			$("#xkcdcontent").append(
@@ -73,7 +74,7 @@ function loadXKCD(n){
 						src: data.img,
 						title: data.alt,
 						alt: data.title,
-						style : "max-width:100%"
+						class: "xkcdImage"
 					})
 				)
 			);
