@@ -1,7 +1,7 @@
 //reddit
                     //AskHistorians,   knitting,   crochet,  diy,   woodworking,   somethingimade,   askreddit,   unexpected,   math
 var subredditArray = [true,             true,       true,    true,  true,          true,             true,        true,         true,   true,         true,         true     ]; //(12)
-var subredditNames = ["AskHistorians", "knitting", "crochet","diy", "woodworking","math",  "askreddit","unexpected", "somethingimade", "askphysics", "askscience", "jamesandted"];
+var subredditNames = ["AskHistorians", "Knitting", "Crochet","DIY", "Woodworking","Math",  "AskReddit","Unexpected", "SomethingIMade", "AskPhysics", "AskScience", "JamesAndTed"];
 var mostRecentXKCD, XKCDindex;
 
 function setUpRedditCheckboxes(){
@@ -13,15 +13,19 @@ function setUpRedditCheckboxes(){
     );
     var width = 3;
     var height = parseInt(subredditArray.length/width);
-    
+
+    $("#redditCheckTable").append(
+        $("<tr>").attr({id: "row_0"})
+    );
     for(var y = 0; y < height; y++){
         for(var x = 0; x < width; x++){
+            // alert(y);
             $("#row_" + y).append(
                 $("<td>").attr({
-                    class:"invisibleTableCell",
+                    class:"subredditTableCell",
                 }).append(
                     $("<div>").attr({
-                        class: "roundedOne"
+                        class: "subredditCheckbox"
                     }).append(
                         $("<input>").attr({
                             type:"checkbox",
@@ -35,7 +39,7 @@ function setUpRedditCheckboxes(){
                     )
                 ),
                 $("<td>").attr({
-                    class:"invisibleTableCell",
+                    class:"subredditTableCell",
                 }).append(
                     $("<a>").attr({
                         href: "http://www.reddit.com/r/" + subredditNames[x + width*y],
