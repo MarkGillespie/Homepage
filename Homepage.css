@@ -52,13 +52,13 @@ a {
 }
 
 .mainBody {
-  padding: 10px 25px;
+  padding: 1.03vh 25px;
   overflow: hidden;
 }
 
 .title {
-  padding-top: 10px;
-  height: 50px;
+  padding-top: 1.05vh;
+  height: 5.3vh;
   width: 100%;
   font-size: 20px;
   text-align: center;
@@ -69,8 +69,18 @@ a {
   top:-1px;
 }
 
-.subredditTableCell {
-  color: #F00;
+@media (max-height: 730px) {
+  .checkboxes {
+    display: none;
+  }
+}
+
+@media (min-height: 730px) {
+  .checkboxes {
+    max-width: 100%;
+    overflow: scroll; 
+    height:14vh;
+  }
 }
 
 .subredditLink, .subredditLink:visited{
@@ -95,7 +105,7 @@ a {
   vertical-align: top;
 
   box-sizing:border-box;
-  padding:10px;
+  padding: 10px;
   width:100%;
 
   overflow: hidden;
@@ -149,8 +159,8 @@ a {
   padding-left: 5%;
   padding-right: 5%;
   vertical-align: top;
-  font-size: 12px;
-  margin-top: 10px;
+  font-size: 10pt;
+  margin-top: 1.06vh;
 }
 
 .rssBackground {
@@ -159,13 +169,28 @@ a {
   vertical-align: top;
 }
 
-.rssItems {
-  height: 820px;
-  overflow-y:scroll;
+@media (max-height: 730px) {
+  .rssItems {
+    height: 70vh;
+    overflow-y:scroll;
+  }
 }
 
+@media (min-height: 730px) {
+  .rssItems {
+    height: 88vh;
+    overflow-y:scroll;
+  }
+}
+
+
+
 .xkcdcontent {
-  margin: 10px 0px 10px 0px;
+  margin: 1vh 0 1vh  0;
+  height: 77.33vh;
+  width: auto;
+  overflow-y:scroll;
+  display: inline-block;
 }
 
 .xkcdImage {

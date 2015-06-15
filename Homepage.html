@@ -17,6 +17,8 @@
 </head>
 
 <body style = "min-height:100%" onLoad = "loadCurrentXKCD(); initializeRSS(); setUpRedditCheckboxes(); updateReddit()">
+
+  <!-- navbar -->
   <div class = "navBar">
       <div class = "navBarItem"><a href = "http://www.its.caltech.edu/~mgillesp/home.html" class = "menuItem">My Webpage</a></div>
       <div class = "navBarItem"><a href = "http://www.netflix.com" class = "menuItem">Netflix</a></div>
@@ -32,15 +34,15 @@
     <div class = "redditPanel">
       <a href = "https://www.reddit.com/"><div class = "title"> reddit </div></a>
       <center>
-        <div class = "checkboxes" id = "redditCheckboxes" style = "max-width: 100%;overflow-x: scroll"></div>
+        <div class = "checkboxes" id = "redditCheckboxes"></div>
       </center>
-      <div style = "height: 670px; overflow-y: scroll; max-width:100%" id = "reddit"></div>
+      <div style = "height: 74vh; overflow-y: scroll; max-width:100%" id = "reddit"></div>
     </div>
 
      <!-- XKCD -->
     <div class = "xkcdPanel">
       <a href = "https://xkcd.com/"><div class = "title"> xkcd </div></a>
-      <div id = "xkcdtitle" style = "text-align:center;padding: 4px 0"> xkcd </div>
+      <div id = "xkcdtitle" style = "text-align:center;padding: 4px 0;font-size:20px;margin-bottom:10px"> xkcd </div>
       <div class = "xkcdNavBar">
         <div class = "navButton" onclick = "xkcdMove(-1)" accesskey = "p"> Prev </div>
         <div class = "navButton" onclick = "xkcdRandom()" accesskey = "p"> Random </div>
