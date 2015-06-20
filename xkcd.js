@@ -28,7 +28,7 @@ function loadCurrentXKCD(){
 			//alert(mostRecentXKCD);
 			$("#xkcdtitle").empty();
 			$("#xkcdtitle").append(
-				data.num + " " + data.title
+				data.num + ": " + data.title
 			);
 			$("#xkcdcontent").append(
 				$("<a>").attr({
@@ -39,7 +39,10 @@ function loadCurrentXKCD(){
 						title: data.alt,
 						alt: data.title,
 						class: "xkcdImage"
-					})
+					}),
+					$("<div>").append(
+						data.alt
+					)
 				)
 			);
 		}
@@ -63,7 +66,7 @@ function loadXKCD(n){
 			$("#xkcdcontent").empty();
 			$("#xkcdtitle").empty();
 			$("#xkcdtitle").append(
-				data.num + " " + data.title
+				data.num + ": " + data.title
 			);
 
 			$("#xkcdcontent").append(
@@ -75,7 +78,10 @@ function loadXKCD(n){
 						title: data.alt,
 						alt: data.title,
 						class: "xkcdImage"
-					})
+					}),
+					$("<div>").append(
+						data.alt
+					)
 				)
 			);
 		}
